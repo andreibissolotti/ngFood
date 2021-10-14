@@ -2,17 +2,38 @@
     <span>Pedido</span>
 </mat-toolbar>
 
-<p>Seu pedido está vazio</p>
+<h3 *ngIf="ps.pedido.length == 0">Seu pedido está vazio</h3>
+
+<mat-list *ngIf="!(ps.pedido.length == 0)">
+    <mat-list-item *ngFor="let item of obterListaPedidos()">
+        <p>{{item.descricao}}</p>
+        <div class="preco">
+            <p>{{ps.contItem(item)}} x</p>
+            <div mat-line>R$ {{item.preco | number:'1.2-2'}}</div>
+            <div *ngIf="ps.contItem(item)>0" class="addItem">
+                <button mat-icon-button (click)="ps.addItem(item)">
+                    <mat-icon>expand_less</mat-icon>
+                </button>
+
+                <div>{{ps.contItem(item)}}</div>
+
+                <button mat-icon-button (click)="ps.delItem(item)">
+                    <mat-icon>expand_more</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-list-item>
+</mat-list>
 
 <strong>
     <p>Total</p>
-    <p>R$ 0,00</p>
+    <p>R$ {{ps.precoPedido() | number:'1.2-2'}}</p>
 </strong>
 
 <mat-toolbar class="rodape">
     <div>
         <button mat-raised-button routerLink="">Incluir mais itens</button>
-        <button mat-raised-button>Limpar</button>
+        <button mat-raised-button (click)="ps.limparPedido()">Limpar</button>
     </div>
     <button mat-raised-button color="accent">Concluir</button>
 </mat-toolbar>

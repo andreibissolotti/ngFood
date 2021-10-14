@@ -15,3 +15,38 @@ strong {
   justify-content: space-between;
   gap: 1rem;
 }
+
+h3 {
+  padding: 1rem;
+}
+
+.preco {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addItem {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: right;
+}
+
+.addItem mat-icon {
+  vertical-align: top;
+  width: 1em !important;
+  font-size: 1em;
+  line-height: 1em;
+}
+
+.addItem button {
+  height: 1em !important;
+  width: 1em !important;
+  font-size: 1em;
+}
+
+p {
+  margin: 0;
+}

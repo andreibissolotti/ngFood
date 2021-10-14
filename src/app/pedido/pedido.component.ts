@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { item, PedidoAtualService } from '../pedido-atual.service';
 
 @Component({
   selector: 'app-pedido',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PedidoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public ps: PedidoAtualService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+  }
+
+  obterListaPedidos(){
+    let listaPedido: item[] = []
+    this.ps.pedido.forEach(function(e){
+      if (!listaPedido.includes(e)){
+        listaPedido.push(e);
+      }
+    })
+    return listaPedido;
   }
 
 }
