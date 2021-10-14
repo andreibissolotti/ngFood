@@ -5,8 +5,8 @@ import { PedidoComponent } from './pedido/pedido.component';
 
 
 const routes: Routes = [
-  {path: "cardapio", component: CardapioComponent},
-  {path: "pedido", component: PedidoComponent},
+  {path: 'cardapio', component: CardapioComponent},
+  {path: 'pedido', component: PedidoComponent},
   {path: '', redirectTo: 'cardapio', pathMatch: 'full'}
 ];
 

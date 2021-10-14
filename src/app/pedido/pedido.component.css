@@ -1,0 +1,17 @@
+strong {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  font-size: 1.3em;
+}
+
+.rodape {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rodape > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}

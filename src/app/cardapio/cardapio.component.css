@@ -1,0 +1,51 @@
+.header {
+  position: fixed;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.list {
+  margin-top: 128px;
+}
+
+.list ~ .list {
+  margin-top: 0;
+}
+
+.second-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemName {
+  white-space: normal !important;
+  padding-right: 2rem !important;
+}
+
+.preco {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.addItem {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: right;
+}
+
+.addItem mat-icon {
+  vertical-align: top;
+  width: 1em !important;
+  font-size: 1em;
+  line-height: 1em;
+}
+
+.addItem button {
+  height: 1em !important;
+  width: 1em !important;
+  font-size: 1em;
+}

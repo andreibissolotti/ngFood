@@ -1,1 +1,38 @@
-<p>cardapio works!</p>
+<mat-toolbar color="primary" class="header">
+    <mat-toolbar-row>
+      <span>Cardápio</span>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="second-row">
+        <button mat-icon-button routerLink="/pedido" aria-label="Carrinho de compras">
+            <mat-icon matBadge="{{ps.pedido.length}}" matBadgeColor="accent">shopping_cart</mat-icon>
+        </button>
+        <a mat-button routerLink="/pedido">Ver pedido</a>
+        <span>R$ {{ps.precoPedido() | number:'1.2-2'}}</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-list *ngFor="let categoria of categorias" class="list">
+    <div mat-subheader style="color: #FF4081;">{{categoria}}</div>
+    <mat-list-item *ngFor="let item of cardapioPorCategoria(categoria)">
+        <p mat-line class="itemName">{{item.descricao}}</p>
+        <div class="preco">
+            <div mat-line>R$ {{item.preco | number:'1.2-2'}}</div>
+            <div *ngIf="ps.contItem(item)>0" class="addItem">
+                <button mat-icon-button (click)="ps.addItem(item)">
+                    <mat-icon>expand_less</mat-icon>
+                </button>
+
+                <div>{{ps.contItem(item)}}</div>
+
+                <button mat-icon-button (click)="ps.delItem(item)">
+                    <mat-icon>expand_more</mat-icon>
+                </button>
+            </div>
+            <div *ngIf="!(ps.contItem(item)>0)">
+                <button mat-icon-button (click)="ps.addItem(item)"><mat-icon>add_shopping_cart</mat-icon></button>
+            </div>
+        </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
